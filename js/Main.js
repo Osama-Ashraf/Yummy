@@ -1,4 +1,4 @@
-import {SideNav} from './sideNav.module.js'
+import SideNav from './sideNav.module.js'
 const sideNav = new SideNav();
 
 

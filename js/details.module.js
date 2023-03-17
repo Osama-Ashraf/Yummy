@@ -1,4 +1,3 @@
-import {Home} from './home.module.js'
 export default class Details{
     constructor(meal){
         $('.loading-screen').fadeIn(0);
@@ -19,9 +18,9 @@ export default class Details{
                         <h2>${meal.strMeal}</h2>
                 </div>
                 <div class="col-md-8">
-                <div class="d-flex">
-                    <button class="btn-close btn-close-white" id="btnClose"></button>
+                <div class="d-flex justify-content-between">
                     <h2>Instructions</h2>
+                    <button class="btn-close btn-close-white" id="btnClose"></button>
                 </div>
                 
                     <p>${meal.strInstructions}</p>

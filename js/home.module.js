@@ -1,5 +1,5 @@
 import Details from './details.module.js';
-export class Home{
+export default class Home{
     constructor(){
         $('.loading-screen').fadeIn(0);
         this.display();
