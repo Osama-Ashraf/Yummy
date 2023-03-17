@@ -1,5 +1,5 @@
-import {Home} from './home.module.js'
-const home = new Home();
+import {SideNav} from './sideNav.module.js'
+const sideNav = new SideNav();
 
 
 

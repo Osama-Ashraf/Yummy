@@ -1,22 +1,29 @@
 import {Home} from './home.module.js'
 export default class Details{
     constructor(meal){
+        $('.loading-screen').fadeIn(0);
         this.display(meal);
         $('#btnClose').click(()=>{
             $('#data').toggleClass('d-none');
             $('#details').toggleClass('d-none');
         });
+        $(this).ready(()=>{
+            $('.loading-screen').fadeOut(500);
+        });
     }
 
     display(meal){
         const cartona = `
-        <button class="btn-close btn-close-white" id="btnClose"></button>
         <div class="col-md-4">
                     <img class="w-100 rounded-3" src="${meal.strMealThumb}">
                         <h2>${meal.strMeal}</h2>
                 </div>
                 <div class="col-md-8">
+                <div class="d-flex">
+                    <button class="btn-close btn-close-white" id="btnClose"></button>
                     <h2>Instructions</h2>
+                </div>
+                
                     <p>${meal.strInstructions}</p>
                     <h3><span class="fw-bolder">Area : </span>${meal.strArea}</h3>
                     <h3><span class="fw-bolder">Category : </span>${meal.strCategory}</h3>

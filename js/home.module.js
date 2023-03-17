@@ -1,7 +1,11 @@
 import Details from './details.module.js';
 export class Home{
     constructor(){
+        $('.loading-screen').fadeIn(0);
         this.display();
+        $(this.display()).ready(()=>{
+            $('.loading-screen').fadeOut(500);
+        });
     }
     
     async display(){
