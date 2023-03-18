@@ -1,18 +1,20 @@
 import Details from './details.module.js';
 export default class Home{
-    constructor(){
+    constructor(Api){
+        this.api = Api;
         $('.loading-screen').fadeIn(0);
         this.display(); 
         $(document).ready(()=> {
-            $('.loading-screen').fadeOut(1000);
+            $('.loading-screen').fadeOut(500);
         }); 
     }
     
     async display(){
-        const api = `https://www.themealdb.com/api/json/v1/1/search.php?s=`;
+        const api = this.api;
         const data =   await this.fetchApi(api);
         const meals = data.meals;
-        let cartona = ``;
+        if(meals!=null){
+            let cartona = ``;
         for(let i=0;i<meals.length;i++){
             cartona+=`<div class="col-md-3">
             <div class="meal position-relative overflow-hidden rounded-2 cursor-pointer">
@@ -28,10 +30,17 @@ export default class Home{
             const meal = $($(e.target).children()[0]).text();
             this.getDetails(meal);
         })
+        }
+        else{
+            $('#data').html('<h1>No meals found</h1>');
+            $('#data').css('text-align', 'center');
+        }
+        
     }
 
     async fetchApi(api){
         const respone = await (await fetch(api)).json();
+        //console.log(respone);
         return respone;
     }
 

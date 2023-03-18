@@ -1,10 +1,12 @@
-import Home from './home.module.js'
+import Home from './home.module.js';
 import Search from './search.module.js';
 import Categories from './categories.module.js';
 import Area from './area.module.js';
+import Ingredients from './Ingredients.module.js';
+import Contact from './contact.module.js';
 export default class SideNav{
     constructor(){
-        const home = new Home();
+        const home = new Home('https://www.themealdb.com/api/json/v1/1/search.php?s=');
         $('.side-nav-menu').css('left', `-${$('.side-nav-menu').innerWidth()}`);
         $('.sideNav ').click(this.toggleSideNave);
         $('.side-nav-menu ul li ').click(this.toggleSideNave);
@@ -14,7 +16,7 @@ export default class SideNav{
                 this.toggleSideNave();
             }
             
-            const home = new Home();
+            const home = new Home('https://www.themealdb.com/api/json/v1/1/search.php?s=');
         });
         $($('.side-nav-menu ul li')[0]).click(()=>{
             $('#search').addClass('d-none');
@@ -28,8 +30,15 @@ export default class SideNav{
             $('#search').addClass('d-none');
             const area = new Area();
         });
+        $($('.side-nav-menu ul li')[3]).click(()=>{
+            $('#search').addClass('d-none');
+            const ingredients = new Ingredients();
+        });
+        $($('.side-nav-menu ul li')[4]).click(()=>{
+            $('#search').addClass('d-none');
+            const contact = new Contact();
+        });
     }
-//Search  Categories  Area  Ingredients  Contact Us
 
     toggleSideNave(){
         if($('.side-nav-menu').css('left') == '0px'){
