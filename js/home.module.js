@@ -2,10 +2,10 @@ import Details from './details.module.js';
 export default class Home{
     constructor(){
         $('.loading-screen').fadeIn(0);
-        this.display();
-        $(this.display()).ready(()=>{
-            $('.loading-screen').fadeOut(500);
-        });
+        this.display(); 
+        $(document).ready(()=> {
+            $('.loading-screen').fadeOut(1000);
+        }); 
     }
     
     async display(){
@@ -36,7 +36,7 @@ export default class Home{
     }
 
     async getDetails(m){
-        const api = await `https://www.themealdb.com/api/json/v1/1/search.php?s=${m}`;
+        const api = `https://www.themealdb.com/api/json/v1/1/search.php?s=${m}`;
         const meal = await this.fetchApi(api);
         const details = new Details(meal.meals[0]);
     }

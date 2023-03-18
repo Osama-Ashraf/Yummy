@@ -1,10 +1,12 @@
 export default class Details{
     constructor(meal){
+        $('#search').css('opacity','0');
         $('.loading-screen').fadeIn(0);
         this.display(meal);
         $('#btnClose').click(()=>{
             $('#data').toggleClass('d-none');
             $('#details').toggleClass('d-none');
+            $('#search').css('opacity',1)
         });
         $(this).ready(()=>{
             $('.loading-screen').fadeOut(500);

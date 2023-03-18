@@ -4,11 +4,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="css/all.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         <title>Yummy</title>
+
 </head>
 
 <body style="overflow: visible;">
@@ -41,7 +42,7 @@
             </div>
         </div>
         <div class="nav-header d-flex flex-column justify-content-between py-4 text-center px-2 bg-white text-black">
-            <img class="logo" src="" alt="" srcset="">
+            <img class="logo cursor-pointer" src="images/logo.png">
             <i class="fa-solid sideNav fa-2x fa-align-justify cursor-pointer"></i>
             <div>   
                 <i class="fa-solid fa-globe d-block"></i>
@@ -51,8 +52,15 @@
     </div>
 
     
-    <div class="container w-75" id="searchContainer">
-       
+    <div class="container w-75 d-none" id="search">
+        <div class="row py-4 ">
+            <div class="col-md-6 ">
+                <input id="SearchByName" class="form-control bg-transparent text-white" type="text" placeholder="Search By Name">
+            </div>
+            <div class="col-md-6">
+                <input id="SearchByFirstLetter" maxlength="1" class="form-control bg-transparent text-white" type="text" placeholder="Search By First Letter">
+            </div>
+        </div>
     </div>
 
     <div class="min-vh-100 position-relative">
