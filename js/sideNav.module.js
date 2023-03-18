@@ -20,22 +20,27 @@ export default class SideNav{
         });
         $($('.side-nav-menu ul li')[0]).click(()=>{
             $('#search').addClass('d-none');
+            $('#details').addClass('d-none');
             const search = new Search();
         });
         $($('.side-nav-menu ul li')[1]).click(()=>{
             $('#search').addClass('d-none');
+            $('#details').addClass('d-none');
             const categories = new Categories();
         });
         $($('.side-nav-menu ul li')[2]).click(()=>{
             $('#search').addClass('d-none');
+            $('#details').addClass('d-none');
             const area = new Area();
         });
         $($('.side-nav-menu ul li')[3]).click(()=>{
             $('#search').addClass('d-none');
+            $('#details').addClass('d-none');
             const ingredients = new Ingredients();
         });
         $($('.side-nav-menu ul li')[4]).click(()=>{
             $('#search').addClass('d-none');
+            $('#details').addClass('d-none');
             const contact = new Contact();
         });
     }

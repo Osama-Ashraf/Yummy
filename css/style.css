@@ -52,5 +52,10 @@ body {
   transition: .5s;
 }
 
+.ingredients{
+  height: 25vh;
+  overflow: hidden;
+}
+
 
 

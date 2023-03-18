@@ -40,17 +40,159 @@ export default class Contact{
                     </div>
                 </div>
             </div>
-            <button id="submitBtn" class="btn btn-outline-danger px-2 mt-3">Submit</button>
+            <button id="submitBtn" disabled class="btn btn-outline-danger px-2 mt-3">Submit</button>
         </div>
     </div>`);
 
+    this.submitBtn = document.getElementById('submitBtn');
+    this.nameInputTouched = false;
+    this.emailInputTouched = false;
+    this.phoneInputTouched = false;
+    this.ageInputTouched = false;
+    this.passwordInputTouched = false;
+    this.repasswordInputTouched = false;
+
     $('input').keyup((e)=> { 
-        console.log('validation');
+        this.formValidation();
     });
 
-    $('#submitBtn').click((e)=> { 
-        console.log('validation');
-        
+    
+    this.submitBtn.click((e)=> { 
+        this.formValidation();
     });
+
+
+    
+
+
+    this.submitBtn.addEventListener("click", () => {
+        this.clearForm();
+    })
+
+    document.getElementById("nameInput").addEventListener("focus", () => {
+        this.nameInputTouched = true
+    })
+
+    document.getElementById("emailInput").addEventListener("focus", () => {
+        this.emailInputTouched = true
+    })
+
+    document.getElementById("phoneInput").addEventListener("focus", () => {
+        this.phoneInputTouched = true
+    })
+
+    document.getElementById("ageInput").addEventListener("focus", () => {
+        this.ageInputTouched = true
+    })
+
+    document.getElementById("passwordInput").addEventListener("focus", () => {
+        this.passwordInputTouched = true
+    })
+
+    document.getElementById("repasswordInput").addEventListener("focus", () => {
+        this.repasswordInputTouched = true
+    })
+    }
+
+    formValidation(){
+
+            if (this.nameInputTouched) {
+                if (this.isNameValid()) {
+                    document.getElementById("nameAlert").classList.replace("d-block", "d-none")
+        
+                } else {
+                    document.getElementById("nameAlert").classList.replace("d-none", "d-block")
+        
+                }
+            }
+            if (this.emailInputTouched) {
+        
+                if (this.isEmailValid()) {
+                    document.getElementById("emailAlert").classList.replace("d-block", "d-none")
+                } else {
+                    document.getElementById("emailAlert").classList.replace("d-none", "d-block")
+        
+                }
+            }
+        
+            if (this.phoneInputTouched) {
+                if (this.isPhoneValid()) {
+                    document.getElementById("phoneAlert").classList.replace("d-block", "d-none")
+                } else {
+                    document.getElementById("phoneAlert").classList.replace("d-none", "d-block")
+        
+                }
+            }
+        
+            if (this.ageInputTouched) {
+                if (this.isAgeValid()) {
+                    document.getElementById("ageAlert").classList.replace("d-block", "d-none")
+                } else {
+                    document.getElementById("ageAlert").classList.replace("d-none", "d-block")
+        
+                }
+            }
+        
+            if (this.passwordInputTouched) {
+                if (this.isPasswordValid()) {
+                    document.getElementById("passwordAlert").classList.replace("d-block", "d-none")
+                } else {
+                    document.getElementById("passwordAlert").classList.replace("d-none", "d-block")
+        
+                }
+            }
+            if (this.repasswordInputTouched) {
+                if (this.isRepasswordValid()) {
+                    document.getElementById("repasswordAlert").classList.replace("d-block", "d-none")
+                } else {
+                    document.getElementById("repasswordAlert").classList.replace("d-none", "d-block")
+        
+                }
+            }
+        
+        
+            if (this.isNameValid() && this.isEmailValid() && this.isPhoneValid() && this.isAgeValid() && this.isPasswordValid() && this.isRepasswordValid()) {
+                this.submitBtn.removeAttribute("disabled")
+            } else {
+                this.submitBtn.setAttribute("disabled", true)
+            }
+        
+
+    }
+
+    isNameValid() {
+        return (/^[a-zA-Z ]+$/.test(document.getElementById("nameInput").value))
+    }
+    
+    isEmailValid() {
+        return (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("emailInput").value))
+    }
+    
+    isPhoneValid() {
+        return (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(document.getElementById("phoneInput").value))
+    }
+    
+    isAgeValid() {
+        return (/^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/.test(document.getElementById("ageInput").value))
+    }
+    
+    isPasswordValid() {
+        return (/^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/.test(document.getElementById("passwordInput").value))
+    }
+    
+    isRepasswordValid() {
+        return document.getElementById("repasswordInput").value == document.getElementById("passwordInput").value
+    }
+
+    clearForm(){
+        document.getElementById("nameInput").value='';
+        document.getElementById("emailInput").value='';
+        document.getElementById("phoneInput").value='';
+        document.getElementById("ageInput").value='';
+        document.getElementById("passwordInput").value='';
+        document.getElementById("repasswordInput").value='';
     }
 }
+
+
+

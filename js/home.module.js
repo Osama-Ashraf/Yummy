@@ -3,8 +3,7 @@ export default class Home{
     constructor(Api){
         this.api = Api;
         $('.loading-screen').fadeIn(0);
-        this.display(); 
-        $(document).ready(()=> {
+        $(this.display()).ready(()=> {
             $('.loading-screen').fadeOut(500);
         }); 
     }
@@ -27,7 +26,13 @@ export default class Home{
         }
         $('#data').html(cartona);
         $('.meal').click((e)=>{
-            const meal = $($(e.target).children()[0]).text();
+            let meal;
+            if (e.target.toString().includes('HTMLHeadingElement')){
+                meal = $($(e.target)).text();
+            }
+            else{
+                meal = $($(e.target).children()[0]).text();
+            }
             this.getDetails(meal);
         })
         }

@@ -1,22 +1,24 @@
 export default class Details{
     constructor(meal){
-        $('#search').css('opacity','0');
-        $('.loading-screen').fadeIn(0);
-        this.display(meal);
-        $('#btnClose').click(()=>{
-            $('#data').toggleClass('d-none');
-            $('#details').toggleClass('d-none');
-            $('#search').css('opacity',1)
-        });
         $(this).ready(()=>{
             $('.loading-screen').fadeOut(500);
         });
+        this.display(meal);
+        $('#search').css('opacity','0');
+        $('.loading-screen').fadeIn(0);
+        $('#btnClose').click(()=>{
+            $('#data').toggleClass('d-none');
+            $('#details').addClass('d-none');
+            $('#search').css('opacity',1)
+        });
+        
+        
     }
 
     display(meal){
         const cartona = `
         <div class="col-md-4">
-                    <img class="w-100 rounded-3" src="${meal.strMealThumb}">
+                    <img  class="w-100 rounded-3" src="${meal.strMealThumb}">
                         <h2>${meal.strMeal}</h2>
                 </div>
                 <div class="col-md-8">
@@ -39,7 +41,7 @@ export default class Details{
             <li class="alert alert-danger m-2 p-1">Soup</li>
                     </ul>
     
-                    <a target="_blank" href="${meal.strSource}">Source</a>
+                    <a target="_blank" href="${meal.strSource}" class="btn btn-primary">Source</a>
                     <a target="_blank" href="${meal.strYoutube}" class="btn btn-danger">Youtube</a>
                 </div>`;
 

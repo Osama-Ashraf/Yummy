@@ -2,11 +2,10 @@ import Home from './home.module.js'
 export default class Categories{
     constructor(){
         $('.loading-screen').fadeIn(0);
-        $(document).ready(()=> {
+        $(this).ready(()=> {
             $('.loading-screen').fadeOut(500);
         }); 
         this.display();
-        
     }
     async display(){
         const api = `https://www.themealdb.com/api/json/v1/1/categories.php`;
@@ -43,7 +42,7 @@ export default class Categories{
 
     async displayCategory(category){
         //console.log(category);
-        const home = new Home(`www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+        const home = new Home(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
     }
 
     async fetchApi(api){

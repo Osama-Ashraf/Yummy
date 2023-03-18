@@ -3,11 +3,10 @@ export default class Area{
     constructor(){
         $('.loading-screen').fadeIn(0);
         this.display(); 
-        $(document).ready(()=> {
+        $(this).ready(()=> {
             $('.loading-screen').fadeOut(500);
         }); 
-        this.display();
-        
+        this.display()
     }
     async display(){
         const api = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
