@@ -16,6 +16,28 @@ export default class Details{
     }
 
     display(meal){
+        const mealMpas = new Map(Object.entries(meal));
+        let ingredients =[];
+
+        for (const [key,value] of mealMpas) {
+            if(key.includes('strIngredient') & value != ''){
+                ingredients.push(value);
+            }
+        }
+
+        let measures = [];
+        for (const [key,value] of mealMpas) {
+            if(key.includes('strMeasure') & value != ' '){
+                measures.push(value);
+            }
+        }
+        let recipes =``;
+        for(let i=0;i<ingredients.length;i++){
+            recipes+=`<li class="alert alert-info m-2 p-1">${measures[i]} ${ingredients[i]}</li>`;
+
+        }
+
+        
         const cartona = `
         <div class="col-md-4">
                     <img  class="w-100 rounded-3" src="${meal.strMealThumb}">
@@ -32,7 +54,7 @@ export default class Details{
                     <h3><span class="fw-bolder">Category : </span>${meal.strCategory}</h3>
                     <h3>Recipes :</h3>
                     <ul class="list-unstyled d-flex g-3 flex-wrap">
-                        <li class="alert alert-info m-2 p-1">1 cup  Lentils</li><li class="alert alert-info m-2 p-1">1 large Onion</li><li class="alert alert-info m-2 p-1">1 large Carrots</li><li class="alert alert-info m-2 p-1">1 tbs Tomato Puree</li><li class="alert alert-info m-2 p-1">2 tsp Cumin</li><li class="alert alert-info m-2 p-1">1 tsp  Paprika</li><li class="alert alert-info m-2 p-1">1/2 tsp Mint</li><li class="alert alert-info m-2 p-1">1/2 tsp Thyme</li><li class="alert alert-info m-2 p-1">1/4 tsp Black Pepper</li><li class="alert alert-info m-2 p-1">1/4 tsp Red Pepper Flakes</li><li class="alert alert-info m-2 p-1">4 cups  Vegetable Stock</li><li class="alert alert-info m-2 p-1">1 cup  Water</li><li class="alert alert-info m-2 p-1">Pinch Sea Salt</li>
+                        ${recipes}
                     </ul>
     
                     <h3>Tags :</h3>
